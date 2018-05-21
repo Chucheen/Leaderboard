@@ -19,6 +19,10 @@
   background-color: black;
   color: yellow;
 }
+.divider{
+    border: 1px solid yellow;
+    width: 100%;
+}
 a {
   color: white;
 }
@@ -60,7 +64,7 @@ table {
   border: none;
 }
 .ordinal {
-  width: 20px;
+  width: 35px;
 }
 .person-name {
   width: 150px;

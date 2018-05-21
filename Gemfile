@@ -37,12 +37,16 @@ gem 'pry-rails'
 
 gem 'factory_bot_rails'
 gem 'faker'
+gem 'activerecord-import'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'pry'
   gem 'pry-nav'
   gem 'simplecov', '~> 0.9'
+
+  gem 'annotate'
+
 end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

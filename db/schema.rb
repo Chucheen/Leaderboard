@@ -11,19 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123070943) do
+ActiveRecord::Schema.define(version: 20180521065116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "checkins", force: true do |t|
-    t.decimal  "weight",     default: 0.0
+    t.decimal  "weight",        default: 0.0
     t.integer  "person_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
     t.decimal  "delta"
     t.integer  "user_id"
+    t.decimal  "general_delta"
   end
 
   add_index "checkins", ["event_id"], name: "index_checkins_on_event_id", using: :btree
@@ -35,6 +36,10 @@ ActiveRecord::Schema.define(version: 20171123070943) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "tagline"
+  end
+
+  create_table "leagues", force: true do |t|
+    t.string "name"
   end
 
   create_table "locations", force: true do |t|
@@ -49,7 +54,10 @@ ActiveRecord::Schema.define(version: 20171123070943) do
     t.datetime "updated_at"
     t.decimal  "starting_weight"
     t.decimal  "up_by"
+    t.integer  "league_id"
   end
+
+  add_index "people", ["league_id"], name: "index_people_on_league_id", using: :btree
 
   create_table "user_location_joins", force: true do |t|
     t.integer  "location_id", null: false

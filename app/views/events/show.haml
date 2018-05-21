@@ -1,14 +1,58 @@
-%h2
+%h1
   #{@event.name}
+%br
+%h3
+  Participants
+  .divider
 - @event.people.each_with_index do |person, index|
   %table
     %tr
-      %td{class: 'ordinal'}= index
-      %td{class: "text-left"}=link_to(person.name, person_path(person.id))
-      %td{class: "text-left weight"}=person.up_by(@event)
+      - percentage_change = person.try(:percentage_change_by_event, @event)
+      - up_by = person.up_by(@event)
+      - positive = up_by.to_f > 0 ? 'positive' : 'negative'
+      %td{class: 'ordinal'}= index + 1
+      %td{class: "text-left"}=link_to("#{person.name}", person_path(person.id))
+      - percent_text = up_by && percentage_change ? "(#{percentage_change.round(2)}%)" : ""
+      %td{class: "#{positive} text-right"}= "#{up_by.try(:round, 3)} #{percent_text}"
+  %br
+
+%h3
+  Global Leaderboard
+  .divider
+- @leaderboard.each_with_index do |person, index|
+  %table
+    %tr
+      - percentage_change = person.try(:percentage_change_by_event, @event)
+      - up_by = person.up_by(@event)
+      - positive = up_by.to_f > 0 ? 'positive' : 'negative'
+      %td{class: 'ordinal'}= index + 1
+      %td{class: "text-left"}=link_to("#{person.name}", person_path(person.id))
+      - percent_text = up_by && percentage_change ? "(#{percentage_change.round(2)}%)" : ""
+      %td{class: "#{positive} text-right"}= "#{up_by.try(:round, 3)} #{percent_text}"
+    %br
   %br
 %br
 %br
+%br
+
+- @league_leaderboards.each do |leaderboard|
+  %h3=leaderboard[:league].name
+  .divider
+  -leaderboard[:leaderboard].each_with_index do |person, index|
+    %table
+      %tr
+        - percentage_change = person.try(:percentage_change_by_event, @event)
+        - up_by = person.up_by(@event)
+        - positive = up_by.to_f > 0 ? 'positive' : 'negative'
+        %td{class: 'ordinal'}= index + 1
+        %td{class: "text-left"}=link_to("#{person.name}", person_path(person.id))
+        /%td{class: "text-left weight"}=person.up_by(@event)
+        - percent_text = up_by && percentage_change ? "(#{percentage_change.round(2)}%)" : ""
+        %td{class: "#{positive} text-right"}= "#{up_by.try(:round, 3)} #{percent_text}"
+      %br
+  %br
+  %br
+  %br
 %br
 %br
 %br

@@ -9,11 +9,11 @@
     - previous_score = nil
     - index = 0
     - people_with_current_rank = 1
-    - @event.people.sort_by{|p| p.up_by || -1000 }.reverse.each do |person|
-      - up_by = person.try(:up_by)
+    - @people.each do |person|
+      - up_by = person.try(:up_by, @event)
       - positive = up_by.to_f > 0 ? 'positive' : 'negative'
       %tr
-        - percentage_change = person.try(:percentage_change)
+        - percentage_change = person.try(:percentage_change_by_event, @event)
         - if up_by.to_f == previous_score.to_f
           - people_with_current_rank += 1
         - else

@@ -7,6 +7,7 @@ class PeopleController < ApplicationController
 
   def index
     @event = Event.last
+    @people = Person.by_general_delta_position(@event)
     unless @event
       redirect_to new_event_path
     end

@@ -5,6 +5,12 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @leaderboard = Person.leaderboard_for(@event)
+    @league_leaderboards = []
+    League.all.each do |league|
+      records = Person.league_leaderboard_for(@event, league)
+      @league_leaderboards << {league: league, leaderboard: records} unless records.empty?
+    end
   end
 
   def create
