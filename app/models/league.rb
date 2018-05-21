@@ -2,9 +2,8 @@
 #
 # Table name: leagues
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  event_id_id :integer
+#  id   :integer          not null, primary key
+#  name :string(255)
 #
 
 class League < ActiveRecord::Base

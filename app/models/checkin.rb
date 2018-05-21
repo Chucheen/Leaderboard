@@ -2,14 +2,15 @@
 #
 # Table name: checkins
 #
-#  id         :integer          not null, primary key
-#  weight     :decimal(, )      default(0.0)
-#  person_id  :integer
-#  created_at :datetime
-#  updated_at :datetime
-#  event_id   :integer
-#  delta      :decimal(, )
-#  user_id    :integer
+#  id            :integer          not null, primary key
+#  weight        :decimal(, )      default(0.0)
+#  person_id     :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#  event_id      :integer
+#  delta         :decimal(, )
+#  user_id       :integer
+#  general_delta :decimal(, )
 #
 
 class Checkin < ActiveRecord::Base

@@ -8,6 +8,7 @@
 #  updated_at      :datetime
 #  starting_weight :decimal(, )
 #  up_by           :decimal(, )
+#  league_id       :integer
 #
 
 class Person < ActiveRecord::Base
