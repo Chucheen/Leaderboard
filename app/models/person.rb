@@ -33,11 +33,11 @@ class Person < ActiveRecord::Base
   }
 
   scope :leaderboard_for, ->(event) {
-    by_general_delta_position(event).limit(10)
+    by_general_delta_position(event)
   }
 
   scope :league_leaderboard_for, ->(event, league){
-    by_general_delta_position(event).where(league: league).limit(10)
+    by_general_delta_position(event).where(league: league)
   }
 
   def up_by(event=nil)

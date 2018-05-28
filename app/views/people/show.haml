@@ -2,11 +2,13 @@
   #{@person.name}
 - @person.try(:checkin_diffs).each_pair do |event, diffs|
   %table
-    %th= event
+    %th
+      =event
     -diffs.each do |diff|
       - classname = diff.to_f > 0 ? 'positive' : 'negative'
+      - status = diff.to_f > 0 ? 'Won' : 'Lost'
       %tr
-        %td{class: classname} #{diff.to_f}
+        %td{class: classname} #{status} #{diff.to_f}
   %br
 %br
 %br
