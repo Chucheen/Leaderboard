@@ -39,4 +39,8 @@ In the global gemset for the ruby version you are using you should have `bundler
 
 And you should be able to browse to [http://localhost:3000/](http://localhost:3000/) and you should see the application.
 
-This application has been also deployed to heroku under: https://weight-tracker.herokuapp.com/
+##Deploy to production
+
+    git push heroku master
+
+This application has been already deployed to heroku under: https://weight-tracker.herokuapp.com/
