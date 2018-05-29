@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Chucheen/Leaderboard.svg?branch=master)](https://travis-ci.org/Chucheen/Leaderboard)
 # Synap Weighin - Track and be the best weigh gainer on holidays
 
 ## Installation
