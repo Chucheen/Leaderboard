@@ -10,4 +10,4 @@ cache: bundler
 script:
   - export RAILS_ENV=test
   - bundle exec rake db:create db:schema:load db:test:prepare
-  - bundle exec rspec --color --format documentation --require spec_helper --require rails_helper
+  - bundle exec rspec --color --format documentation --require spec_helper --require spec_helper
